@@ -10,7 +10,7 @@ module.exports = class QueueCommand extends Command {
       description: {
         content: 'get current guild queue',
       },
-      category: 'Music',
+      category: 'เพลง',
       cooldown: 3000,
     });
   }
@@ -18,7 +18,7 @@ module.exports = class QueueCommand extends Command {
   async exec(msg) {
     try {
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
-      if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | There no music playing in this guild')] });
+      if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | ไม่มีดนตรีเล่นในเซิฟเวอร์นี้')] });
       if (GuildPlayers.queue.size < 1) {
         return msg.reply({
           embeds: [CreateEmbed('info', `
@@ -43,7 +43,7 @@ module.exports = class QueueCommand extends Command {
       }).start();
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด')] });
     }
   }
 };

@@ -8,7 +8,7 @@ module.exports = class PingCommand extends Command {
       description: {
         content: 'Gets the bot\'s heartbeat and latency',
       },
-      category: 'Util',
+      category: 'อื่นๆ',
       cooldown: 3000,
     });
   }
@@ -23,7 +23,7 @@ module.exports = class PingCommand extends Command {
       setTimeout(() => { message.edit({ content: null, embeds: [embed] }); }, 5000);
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด')] });
     }
   }
 };

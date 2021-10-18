@@ -12,7 +12,7 @@ module.exports = class StatsCommand extends Command {
       description: {
         content: 'Gets the bot\'s statistic',
       },
-      category: 'Util',
+      category: 'อื่นๆ',
       cooldown: 3000,
     });
   }
@@ -38,7 +38,7 @@ Playing Players: ${this.client.erela.nodes.values().next().value.stats.playingPl
       });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด')] });
     }
   }
 };

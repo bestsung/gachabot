@@ -9,7 +9,7 @@ module.exports = class NowPlayCommand extends Command {
       description: {
         content: 'Get the current playing',
       },
-      category: 'Music',
+      category: 'เพลง',
       cooldown: 3000,
     });
   }
@@ -17,7 +17,7 @@ module.exports = class NowPlayCommand extends Command {
   async exec(msg) {
     try {
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
-      if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | There no music playing in this guild')] });
+      if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | ไม่มีดนตรีเล่นในเซิฟเวอร์นี้')] });
       return msg.channel.send({
         embeds: [CreateEmbed('info', stripIndent`
       ✅ กำลังเล่น: 
@@ -33,7 +33,7 @@ module.exports = class NowPlayCommand extends Command {
       });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด')] });
     }
   }
 };

@@ -8,7 +8,7 @@ module.exports = class CalCommand extends Command {
       description: {
         content: 'Change music volume',
       },
-      category: 'Calculate',
+      category: 'คำนวณ',
       cooldown: 3000,
       args: [
         {
@@ -90,7 +90,7 @@ module.exports = class CalCommand extends Command {
       return msg.channel.send({ embeds: [CreateEmbed('info', `**รายการ**\n🔦 - แท่งไฟ x\`${glowstick}\`\n🖼️ - ป้ายไฟ x\`${billboard}\`\n🐣 - ไก่น่ารัก x\`${chicken}\`\n🎈 - ลูกโป่ง x\`${balloon}\`\n\n**แต้มที่ได้รับ**\n🔥 \`+${firepoints}\` **|** 🌹 \`+${flowerpoints}\`\n\n**ราคา** \`(เรท:${price}฿)\`\n**💵 | **\`${total_price}\`฿`)] });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด')] });
     }
   }
 };

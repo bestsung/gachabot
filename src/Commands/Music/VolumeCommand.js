@@ -8,7 +8,7 @@ module.exports = class VolumeCommand extends Command {
       description: {
         content: 'Change music volume',
       },
-      category: 'Music',
+      category: 'เพลง',
       cooldown: 3000,
       args: [
         {
@@ -27,14 +27,14 @@ module.exports = class VolumeCommand extends Command {
   async exec(msg, { volume }) {
     try {
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
-      if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | There no music playing in this guild')] });
-      if (!msg.member.voice.channelId) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel to do this.')] });
-      if (msg.member.voice.channelId !== GuildPlayers.voiceChannel) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel same as me to do this.')] });
+      if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | ไม่มีดนตรีเล่นในเซิฟเวอร์นี้')] });
+      if (!msg.member.voice.channelId) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | คุณต้องเข้าร่วมห้องเพื่อใช้คำสั่ง')] });
+      if (msg.member.voice.channelId !== GuildPlayers.voiceChannel) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | คุณต้องเข้าร่วมห้องเดียวกับฉันเพื่อใช้คำสั่ง')] });
       GuildPlayers.setVolume(volume);
       return msg.channel.send({ embeds: [CreateEmbed('info', `👌 | เปลี่ยนระดับเสียงเป็น \`${volume}\``)] });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด')] });
     }
   }
 };

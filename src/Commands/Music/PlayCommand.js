@@ -8,7 +8,7 @@ module.exports = class PlayCommand extends Command {
       description: {
         content: 'Play some music.',
       },
-      category: 'Music',
+      category: 'เพลง',
       cooldown: 3000,
       args: [
         {
@@ -27,9 +27,9 @@ module.exports = class PlayCommand extends Command {
     try {
       const MusicTracks = await this.client.erela.search(query, msg.author);
       if (MusicTracks.loadType === 'NO_MATCHES') return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | No result found.')] });
-      if (MusicTracks.loadType === 'LOAD_FAILED') return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured when loading the track.')] });
+      if (MusicTracks.loadType === 'LOAD_FAILED') return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด when loading the track.')] });
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
-      if (!msg.member.voice.channelId) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel to do this.')] });
+      if (!msg.member.voice.channelId) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | คุณต้องเข้าร่วมห้องเพื่อใช้คำสั่ง')] });
       if (!GuildPlayers) {
         const player = await this.client.erela.create({
           guild: msg.guild.id,
@@ -50,7 +50,7 @@ module.exports = class PlayCommand extends Command {
         }
         return player.play();
       }
-      if (msg.member.voice.channelId !== GuildPlayers.voiceChannel) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel same as me to do this.')] });
+      if (msg.member.voice.channelId !== GuildPlayers.voiceChannel) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | คุณต้องเข้าร่วมห้องเดียวกับฉันเพื่อใช้คำสั่ง')] });
       if (MusicTracks.loadType === 'PLAYLIST_LOADED') {
         for (const track of MusicTracks.tracks) {
           GuildPlayers.queue.add(track);
@@ -61,7 +61,7 @@ module.exports = class PlayCommand extends Command {
       return msg.channel.send({ embeds: [CreateEmbed('info', `☑ | เพิ่มแทร็ก \`${MusicTracks.tracks[0].title}\` [${msg.author}]`)] });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด')] });
     }
   }
 
@@ -74,9 +74,9 @@ module.exports = class PlayCommand extends Command {
     if (!query) interaction.editReply({ embeds: [CreateEmbed('info', '⛔ | Input music name.')] });
     const MusicTracks = await this.client.erela.search(query, interaction.user);
     if (MusicTracks.loadType === 'NO_MATCHES') return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | No result found.')] });
-    if (MusicTracks.loadType === 'LOAD_FAILED') return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | An error occured when loading the track.')] });
+    if (MusicTracks.loadType === 'LOAD_FAILED') return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด when loading the track.')] });
     const GuildPlayers = this.client.erela.players.get(interaction.guild.id);
-    if (!interaction.member.voice.channelId) return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel to do this.')] });
+    if (!interaction.member.voice.channelId) return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | คุณต้องเข้าร่วมห้องเพื่อใช้คำสั่ง')] });
     if (!GuildPlayers) {
       const player = await this.client.erela.create({
         guild: interaction.guild.id,
@@ -97,7 +97,7 @@ module.exports = class PlayCommand extends Command {
       }
       return player.play();
     }
-    if (interaction.member.voice.channelId !== GuildPlayers.voiceChannel) return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel same as me to do this.')] });
+    if (interaction.member.voice.channelId !== GuildPlayers.voiceChannel) return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | คุณต้องเข้าร่วมห้องเดียวกับฉันเพื่อใช้คำสั่ง')] });
     if (MusicTracks.loadType === 'PLAYLIST_LOADED') {
       for (const track of MusicTracks.tracks) {
         GuildPlayers.queue.add(track);
