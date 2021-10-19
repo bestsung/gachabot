@@ -7,7 +7,6 @@ module.exports = {
     port: 2095,
     secure: false,
   }],
-  prefix: '#',
+  prefix: '!',
   updateSlash: false,
 };
-#asd
