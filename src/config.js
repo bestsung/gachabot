@@ -10,4 +10,3 @@ module.exports = {
   prefix: '!',
   updateSlash: false,
 };
-#
