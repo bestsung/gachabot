@@ -5,7 +5,7 @@ module.exports = {
     host: 'lavalink.darrennathanael.com',
     password: 'whatwasthelastingyousaid',
     port: 2095,
-    secure: false,
+    secure: true
   }],
   prefix: '!',
   updateSlash: false,
