@@ -1,7 +1,7 @@
 const { Command, Argument } = require('discord-akairo');
 const { CreateEmbed } = require('../../Utility/CreateEmbed');
 
-module.exports = class CalCommand extends Command {
+module.exports = class CalDiamondCommand extends Command {
   constructor() {
     super('Cal', {
       aliases: ['diamond','dm'],
@@ -46,7 +46,7 @@ module.exports = class CalCommand extends Command {
 
     try {
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
-      return msg.channel.send({ embeds: [CreateEmbed('info', `**สรุป**\n[💎] \`${diamond}\`\n[💵] \`${money}\`฿\n\`${billboard}\`฿ 💵\n\n**ผลลัพธ์**\n[💵] 100฿ = [💎] \`${diamond_1}\`\n\n**สรุป** \n✔️ ถูกกว่าเติมเอง __\`${difference}\`%__)] });
+      return msg.channel.send({ embeds: [CreateEmbed('info', `**สรุป**\n[💎] \`${diamond}\`\n[💵] \`${money}\`฿\n\n**ผลลัพธ์**\n[💵] 100฿ = [💎] \`${diamond_1}\`\n\n**สรุป**\n✔️ ถูกกว่าเติมเอง \`${difference}\``)] });
     } catch (e) {
       this.client.logger.error(e.message);
       return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด')] });
