@@ -3,7 +3,7 @@ const { CreateEmbed } = require('../../Utility/CreateEmbed');
 
 module.exports = class CalDiamondCommand extends Command {
   constructor() {
-    super('Cal', {
+    super('Caldiamond', {
       aliases: ['diamond','dm'],
       description: {
         content: 'Change music volume',
