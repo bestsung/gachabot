@@ -38,17 +38,16 @@ module.exports = class CalDiamondCommand extends Command {
   async exec(msg, { diamond,money }) {
 
     //100฿=Diamond?
-    let diamond_1 = (diamond / money) * 100;
+    let diamond_1 = round(diamond / money) * 100, 2);
 
     //difference
     let difference = (diamond_1 - 366.6) / 366.6;
-    let difference1 = difference * 100;
-    let limited_float = round(difference1, 2)
+    let difference1 = round(difference * 100, 2);
 	
 
     try {
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
-      return msg.channel.send({ embeds: [CreateEmbed('info', `**สรุป**\n[💎] \`${diamond}\`\n[💵] \`${money}฿\`\n\n**ผลลัพธ์**\n[💵] 100฿ = [💎] \`${diamond_1}\`\n\n**สรุป**\n✅ ถูกกว่าเติมเอง \`${limited_float}%\``)] });
+      return msg.channel.send({ embeds: [CreateEmbed('info', `**สรุป**\n[💎] \`${diamond}\`\n[💵] \`${money}฿\`\n\n**ผลลัพธ์**\n[💵] 100฿ = [💎] \`${diamond_1}\`\n\n**สรุป**\n✅ ถูกกว่าเติมเอง \`${difference1}%\``)] });
     } catch (e) {
       this.client.logger.error(e.message);
       return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | เกิดข้อผิดพลาด')] });
