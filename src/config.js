@@ -3,8 +3,8 @@ module.exports = {
   nodes: [{
     identifier: 'NODE-MAIN-2',
     host: 'lavalink.darrennathanael.com',
-    password: 'whatwasthelastingyousaid',
-    port: 2095,
+    password: 'clover',
+    port: 80,
     secure: false
   }],
   prefix: '!',
